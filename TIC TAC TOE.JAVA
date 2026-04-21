@@ -1,37 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+public class TicTacToeUC4 {
 
-int main() {
-    int toss;
-    int currentPlayer;
-    char player1Symbol, player2Symbol;
+    // Method to convert slot to row and column
+    public static int[] convertSlotToIndex(int slot) {
+        int row = (slot - 1) / 3;
+        int col = (slot - 1) % 3;
 
-    // Seed random number generator
-    srand(time(NULL));
-
-    // Generate random number (0 or 1)
-    toss = rand() % 2;
-
-    // Apply logic based on toss result
-    if (toss == 0) {
-        currentPlayer = 1;
-        player1Symbol = 'X';
-        player2Symbol = 'O';
-        printf("Player 1 wins the toss and will start first.\n");
-    } else {
-        currentPlayer = 2;
-        player2Symbol = 'X';
-        player1Symbol = 'O';
-        printf("Player 2 wins the toss and will start first.\n");
+        return new int[]{row, col};
     }
 
-    // Display assigned symbols
-    printf("Player 1 Symbol: %c\n", player1Symbol);
-    printf("Player 2 Symbol: %c\n", player2Symbol);
+    public static void main(String[] args) {
 
-    // Display current player
-    printf("Current Player: Player %d\n", currentPlayer);
+        int slot = 5; // Example input
 
-    return 0;
+        int[] position = convertSlotToIndex(slot);
+
+        System.out.println("Slot: " + slot);
+        System.out.println("Row: " + position[0]);
+        System.out.println("Column: " + position[1]);
+    }
 }
